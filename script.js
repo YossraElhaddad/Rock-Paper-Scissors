@@ -5,6 +5,14 @@ function computerPlay() {
     return choice[random];
 }
 
+function game() {
+    for (let i = 1; i <= 5; i++) {
+        let playerSelection = prompt("Select your choice");
+        let computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
     let message;
     if (playerSelection.toLowerCase() === computerSelection.toLowerCase())
@@ -33,6 +41,3 @@ function playRound(playerSelection, computerSelection) {
     return message;
 
 }
-
-let playerSelection = prompt("Select your choice");
-let computerSelection = computerPlay();
