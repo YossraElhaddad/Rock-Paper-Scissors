@@ -5,28 +5,39 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
 }
 
 button {
     margin: 10px;
     border-radius: 10px;
     border: 2px solid rgba(36, 36, 37, 0);
-    width: 75px;
-    height: 35px;
-    color: white;
+    width: 120px;
+    height: 60px;
     font-weight: bold;
     font-family: sans-serif;
-    font-size: 18px;
+    font-size: 22px;
+    text-align: center;
+    padding: 10px;
 }
 
 .rock {
     background-color: grey;
+    color: white;
 }
 
 .paper {
     background-color: white;
+    color: black;
 }
 
 .scissors {
     background-color: tomato;
+    color: white;
 }
