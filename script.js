@@ -5,7 +5,7 @@ const btns = document.querySelectorAll('button');
 const body = document.querySelector('body');
 const div = document.createElement('div');
 
-div.setAttribute('style', 'width: 800px; height: 500px; font-weight: bold; background-color: lightblue; font-size: 24px; font-family: sans-serif; text-align:center; white-space: pre-line;');
+div.setAttribute('style', 'width: 800px; height: 500px; padding: 16px; font-weight: bold; background-color: lightblue; font-size: 24px; font-family: sans-serif; text-align:center; white-space: pre-line;');
 div.textContent = "";
 body.appendChild(div);
 
