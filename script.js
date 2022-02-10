@@ -5,7 +5,7 @@ const btns = document.querySelectorAll('button');
 const body = document.querySelector('body');
 const div = document.createElement('div');
 
-div.setAttribute('style', 'width: 800px; height: 300px; font-weight: bold; background-color: lightblue; font-size: 22px; font-family: sans-serif; text-align:center;');
+div.setAttribute('style', 'width: 800px; height: 500px; font-weight: bold; background-color: lightblue; font-size: 24px; font-family: sans-serif; text-align:center; white-space: pre-line;');
 div.textContent = "";
 body.appendChild(div);
 
@@ -37,12 +37,12 @@ function reset() {
 
 function checkResult() {
     if (playerScore == computerScore)
-        div.textContent += '\nIt is a draw!';
+        div.textContent += 'It is a draw!';
 
     else if (playerScore > computerScore)
-        div.textContent += '\nYou win! :D';
+        div.textContent += 'You win! :D';
     else
-        div.textContent += '\nYou lose :(';
+        div.textContent += 'You lose :(';
 
 
 }
@@ -92,9 +92,7 @@ function playRound(playerSelection, computerSelection) {
 
     else message = "Choice unavailable! Please try again";
 
-    message = `Computer chose ${computerSelection}!\n
-    Your score is ${playerScore}\n
-    Computer score is ${computerScore}\n\n`;
+    message = `You chose ${playerSelection}! Computer chose ${computerSelection}!\nYour score is ${playerScore}, Computer score is ${computerScore}\n\n`;
 
     console.log(message);
 
