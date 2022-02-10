@@ -1,36 +1,50 @@
 /*const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('scissors');*/
-const btn = document.querySelector('button');
+const btns = document.querySelectorAll('button');
 const body = document.querySelector('body');
 const div = document.createElement('div');
-div.setAttribute('style', 'width: 500px; height: 100px; font-weight: bold;');
+
+div.setAttribute('style', 'width: 800px; height: 300px; font-weight: bold; background-color: lightblue; font-size: 22px; font-family: sans-serif; text-align:center;');
 div.textContent = "";
 body.appendChild(div);
 
 let playerSelection;
 let computerSelection;
+let message;
 let playerScore = 0;
 let computerScore = 0;
 let count = 0;
 
-btn.addEventListener('click', game);
+btns.forEach((button) => {
+    button.addEventListener('click', function(e) {
+        if (count == 5) reset();
+        playerSelection = this.className;
+        computerSelection = computerPlay();
+        game();
+
+
+    });
+});
+
 
 function reset() {
     playerScore = computerScore = 0;
     count = 0;
     playerSelection = computerSelection = "";
+    div.textContent = "";
 }
 
 function checkResult() {
     if (playerScore == computerScore)
-        div.textContent += "It is a draw!";
-    else if (playerScore > computerScore)
-        div.textContent += "You win! :D";
-    else
-        div.textContent += "You lose :(";
+        div.textContent += '\nIt is a draw!';
 
-    reset();
+    else if (playerScore > computerScore)
+        div.textContent += '\nYou win! :D';
+    else
+        div.textContent += '\nYou lose :(';
+
+
 }
 
 
@@ -42,21 +56,26 @@ function computerPlay() {
 
 function game() {
 
-    playerSelection = `${btn.textContent}`;
-    computerSelection = computerPlay();
-    div.textContext += playRound(playerSelection, computerSelection);
-    count++;
-    if (count % 5 == 0)
-        checkResult();
+    if (count <= 5) {
+        let text = playRound(playerSelection, computerSelection);
+        div.textContent += text;
+        body.appendChild(div);
+        count++;
+    }
+
+    if (count == 5) checkResult();
 
 }
 
 function playRound(playerSelection, computerSelection) {
-    let message = `Computer chose ${computerSelection}!
-    Your score is ${playerScore} <br> Computer score is ${computerScore} <br><br>`;
 
-    if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) { playerScore += 1;
-        computerScore += 1; } else if ((playerSelection.toLowerCase() === "rock") && (computerSelection.toLowerCase() === "paper")) { computerScore += 1; } else if ((playerSelection.toLowerCase() === "rock") && (computerSelection.toLowerCase() === "scissors"))
+
+    if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
+        {
+            playerScore += 1;
+            computerScore += 1;
+        }
+    } else if ((playerSelection.toLowerCase() === "rock") && (computerSelection.toLowerCase() === "paper")) { computerScore += 1; } else if ((playerSelection.toLowerCase() === "rock") && (computerSelection.toLowerCase() === "scissors"))
         playerScore += 1;
 
     else if ((playerSelection.toLowerCase() === "scissors") && (computerSelection.toLowerCase() === "rock"))
@@ -72,6 +91,12 @@ function playRound(playerSelection, computerSelection) {
         computerScore += 1;
 
     else message = "Choice unavailable! Please try again";
+
+    message = `Computer chose ${computerSelection}!\n
+    Your score is ${playerScore}\n
+    Computer score is ${computerScore}\n\n`;
+
+    console.log(message);
 
     return message;
 
